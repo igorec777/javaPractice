@@ -12,6 +12,8 @@ class Task1Test {
         assertTrue(isPrime(2));
         assertTrue(isPrime(3));
         assertFalse(isPrime(4));
+        assertFalse(isPrime(4500000076L));
+        assertTrue(isPrime(4500004381L));
         assertThrows(IllegalArgumentException.class, () -> isPrime(0));
     }
 }

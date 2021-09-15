@@ -17,7 +17,7 @@ class Task6Test {
         List<Department> departments = fromJsonFileToObjectsList("src/departmentsJson.txt",
                 new TypeToken<List<Department>>(){}.getType());
 
-        assertEquals(1L, calcNumberOfEmployees(departments, 20000));
-        assertEquals(2L, calcNumberOfEmployees(departments, 10000));
+        assertEquals(1L, calcNumberOfEmployees(departments, 20000L));
+        assertEquals(2L, calcNumberOfEmployees(departments, 10000L));
     }
 }

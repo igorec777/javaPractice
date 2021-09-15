@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
-
 /**
  * You have two classes:
  * <p>
@@ -71,7 +70,6 @@ public class Task7 {
 
         LongStream transactionSumStream = transactionStream
                 .mapToLong(Transaction::getSum);
-
         return transactionSumStream.reduce(Long::sum).orElse(-1);
     }
 }

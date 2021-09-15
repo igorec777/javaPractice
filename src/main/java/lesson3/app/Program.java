@@ -25,8 +25,9 @@ public class Program {
 
     public static void main(String ... args) throws IOException {
 
+
         System.out.println("TASK 1:");
-        System.out.println(capitalizeFirstLetter(Boolean.toString(isPrime(4))));
+        System.out.println(capitalizeFirstLetter(Boolean.toString(isPrime(293L))));
 
         System.out.println("TASK 2:");
         String text = "Proin elementum sem sit amet purus sem tempor sodales";
@@ -34,7 +35,7 @@ public class Program {
         System.out.println(createBadWordsDetectingStream(text, badWords).collect(Collectors.toList()));
 
         System.out.println("TASK 3:");
-        int[] numbers = {1, 2, 3, 4};
+        int[] numbers = {15, 25, 30, 45, 55, 60};
 
         IntStream evenNums = IntStream.of(numbers).filter(n -> n % 2 == 0);
         IntStream oddNums = IntStream.of(numbers).filter(n -> n % 2 != 0);
@@ -45,10 +46,10 @@ public class Program {
         System.out.println(res);
 
         System.out.println("TASK 4:");
-        System.out.println(factorial(7));
+        System.out.println(factorial(7L));
 
         System.out.println("TASK 5:");
-        System.out.println(sumOfOddNumbersInRange(3, 10));
+        System.out.println(sumOfOddNumbersInRange(3L, 10L));
 
         System.out.println("TASK 6:");
         List<Department> departments = fromJsonFileToObjectsList("src/departmentsJson.txt",

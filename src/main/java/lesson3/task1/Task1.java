@@ -1,7 +1,6 @@
 package lesson3.task1;
 
-import java.util.stream.IntStream;
-
+import java.util.stream.LongStream;
 /**
  * Write a method using Stream API to check the input number is prime or not.
  * Let's agree that input value is always greater than 1 (i.e. 2, 3, 4, 5, ....).
@@ -36,8 +35,9 @@ public class Task1 {
      * @return true if number is prime else false
      */
     public static boolean isPrime(final long number) {
-        if (number < 2)
+        if (number < 2) {
             throw new IllegalArgumentException("number must be >= 2");
-        return IntStream.range(2, (int) number).noneMatch(n -> number % n == 0);
+        }
+        return LongStream.range(2L, number).noneMatch(n -> number % n == 0);
     }
 }

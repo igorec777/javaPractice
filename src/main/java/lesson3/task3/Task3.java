@@ -1,7 +1,6 @@
 package lesson3.task3;
 
 import java.util.stream.IntStream;
-
 /**
  * You have two IntStream. The first stream contains even numbers and the second stream contains odd numbers.
  * Create the third stream that contains numbers from both streams which is divisible by 3 and 5.

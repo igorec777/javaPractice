@@ -9,8 +9,8 @@ class Task5Test {
 
     @Test
     void sumOfOddNumbersInRangeTest() {
-        assertEquals(0, sumOfOddNumbersInRange(0, 0));
-        assertEquals(16, sumOfOddNumbersInRange(7, 9));
-        assertEquals(125, sumOfOddNumbersInRange(21, 30));
+        assertEquals(0L, sumOfOddNumbersInRange(0L, 0L));
+        assertEquals(16L, sumOfOddNumbersInRange(7L, 9L));
+        assertEquals(125L, sumOfOddNumbersInRange(21L, 30L));
     }
 }

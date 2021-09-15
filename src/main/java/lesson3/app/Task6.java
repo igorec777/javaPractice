@@ -3,7 +3,6 @@ package lesson3.app;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
-
 /**
  * You have two classes: Employee (name: String, salary: Long) and
  * Department (name: String, code: String, employees: List<Employee>).
@@ -57,7 +56,6 @@ public class Task6 {
                 .filter(dept -> dept.getCode().startsWith("111-"));
 
         Stream<Employees> employeesStream = departmentStream.flatMap(s -> s.getEmployees().stream());
-
         return employeesStream.filter(empl -> empl.getSalary() >= threshold).count();
     }
 }

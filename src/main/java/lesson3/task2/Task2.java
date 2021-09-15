@@ -2,7 +2,6 @@ package lesson3.task2;
 
 import java.util.List;
 import java.util.stream.Stream;
-
 /**
  * Create a stream that will detect bad words in a text according to a bad words list.
  * All words in the text are divided by whitespaces
