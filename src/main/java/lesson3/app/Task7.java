@@ -60,17 +60,12 @@ public class Task7 {
      * Calculates the general sum of canceled transactions for all non-empty accounts in the list
      */
     public static long calcSumOfCanceledTransOnNonEmptyAccounts(List<Account> accounts) {
-        Stream<Account> accountStream = Stream.of(accounts)
-                .flatMap(Collection::stream)
-                .filter(acc -> acc.getBalance() > 0);
-
-        Stream<Transaction> transactionStream = accountStream
+        return accounts.stream()
+                .filter(acc -> acc.getBalance() > 0)
                 .flatMap(acc -> acc.getTransactions().stream())
-                .filter(tr -> tr.state == State.CANCELED);
-
-        LongStream transactionSumStream = transactionStream
-                .mapToLong(Transaction::getSum);
-        return transactionSumStream.reduce(Long::sum).orElse(-1);
+                .filter(tr -> tr.state == State.CANCELED)
+                .mapToLong(Transaction::getSum)
+                .reduce(Long::sum).orElse(-1);
     }
 }
 

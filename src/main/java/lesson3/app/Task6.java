@@ -51,12 +51,10 @@ import java.util.stream.Stream;
 public class Task6 {
 
     public static long calcNumberOfEmployees(List<Department> departments, long threshold) {
-        Stream<Department> departmentStream = Stream.of(departments)
-                .flatMap(Collection::stream)
-                .filter(dept -> dept.getCode().startsWith("111-"));
-
-        Stream<Employees> employeesStream = departmentStream.flatMap(s -> s.getEmployees().stream());
-        return employeesStream.filter(empl -> empl.getSalary() >= threshold).count();
+        return departments.stream()
+            .filter(dept -> dept.getCode().startsWith("111-"))
+            .flatMap(s -> s.getEmployees().stream())
+            .filter(empl -> empl.getSalary() >= threshold).count();
     }
 }
 

@@ -14,7 +14,7 @@ class Task6Test {
 
     @Test
     void calcNumberOfEmployeesTest() throws IOException {
-        List<Department> departments = fromJsonFileToObjectsList("src/departmentsJson.txt",
+        List<Department> departments = fromJsonFileToObjectsList("src/main/resources/departments.json",
                 new TypeToken<List<Department>>(){}.getType());
 
         assertEquals(1L, calcNumberOfEmployees(departments, 20000L));

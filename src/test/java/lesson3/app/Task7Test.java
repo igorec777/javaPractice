@@ -15,7 +15,7 @@ class Task7Test {
 
     @Test
     void calcSumOfCanceledTransOnNonEmptyAccountsTest() throws IOException {
-        List<Account> accounts = fromJsonFileToObjectsList("src/accountsJson.txt",
+        List<Account> accounts = fromJsonFileToObjectsList("src/main/resources/accounts.json",
                 new TypeToken<List<Account>>(){}.getType());
 
         assertEquals(10000, calcSumOfCanceledTransOnNonEmptyAccounts(accounts));

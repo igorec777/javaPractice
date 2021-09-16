@@ -52,13 +52,13 @@ public class Program {
         System.out.println(sumOfOddNumbersInRange(3L, 10L));
 
         System.out.println("TASK 6:");
-        List<Department> departments = fromJsonFileToObjectsList("src/departmentsJson.txt",
+        List<Department> departments = fromJsonFileToObjectsList("src/main/resources/departments.json",
                 new TypeToken<List<Department>>(){}.getType());
         System.out.println(calcNumberOfEmployees(departments, 20000));
 
 
         System.out.println("TASK 7:");
-        List<Account> accounts = fromJsonFileToObjectsList("src/accountsJson.txt",
+        List<Account> accounts = fromJsonFileToObjectsList("src/main/resources/accounts.json",
                 new TypeToken<List<Account>>(){}.getType());
         System.out.println(calcSumOfCanceledTransOnNonEmptyAccounts(accounts));
     }
