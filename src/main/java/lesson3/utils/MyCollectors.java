@@ -1,11 +1,9 @@
 package lesson3.utils;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static lesson3.utils.WordsHandler.isPalindrome;
 
@@ -62,7 +60,7 @@ public class MyCollectors {
     public static Collector<Integer, ?, Long> countSumOfNumbersSquare() {
         return new CollectorImpl<>(
                 () -> new long[1],
-                (arr, augment) -> arr[0] += (long) augment * augment,
+                (arr, val) -> arr[0] += (long) val * val,
                 null,
                 arr -> arr[0],
                 Set.of(Collector.Characteristics.UNORDERED));
@@ -77,6 +75,20 @@ public class MyCollectors {
                      return map;
                  },
                  (map, str) -> map.get(isPalindrome(str)).add(str),
+                 null,
+                 Function.identity(),
+                 Set.of(Collector.Characteristics.IDENTITY_FINISH, Collector.Characteristics.UNORDERED));
+    }
+
+    public static Collector<Integer, List<Integer>, List<Integer>> transformNumbers(List<IntUnaryOperator> operators) {
+         return new CollectorImpl<>(
+                 ArrayList::new,
+                 (newInts, val) -> {
+                     for (IntUnaryOperator op : operators) {
+                         val = op.applyAsInt(val);
+                     }
+                     newInts.add(val);
+                 },
                  null,
                  Function.identity(),
                  Set.of(Collector.Characteristics.IDENTITY_FINISH, Collector.Characteristics.UNORDERED));
