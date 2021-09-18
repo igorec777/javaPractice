@@ -15,7 +15,7 @@ public class Task4 {
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(0, 1, 2, 3);
         long val = numbers.stream()
-                .collect(MyCollectors.countSumOfNumbersSquare());
+                .collect(MyCollectors.countProductOfNumbersSquare());
         System.out.println(val);
     }
 }

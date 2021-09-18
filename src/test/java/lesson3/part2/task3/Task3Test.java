@@ -12,7 +12,7 @@ class Task3Test {
         final String data = "sample data";
         final Task3.Request request = new Task3.Request(data);
 
-		//still don't know, how to do it not via a string
+        //still don't know, how to do it not via a string
         assertThat(commonRequestHandler.handle(request).getData())
                 .contains("sample data");
         assertThat(commonRequestHandler.handle(request).getData())

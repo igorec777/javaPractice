@@ -3,7 +3,6 @@ package lesson3.utils;
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import static lesson3.utils.WordsHandler.isPalindrome;
 
@@ -57,10 +56,10 @@ public class MyCollectors {
         }
     }
 
-    public static Collector<Integer, ?, Long> countSumOfNumbersSquare() {
+    public static Collector<Integer, ?, Long> countProductOfNumbersSquare() {
         return new CollectorImpl<>(
-                () -> new long[1],
-                (arr, val) -> arr[0] += (long) val * val,
+                () -> new long[]{1},
+                (arr, val) -> arr[0] *= (long) val * val,
                 null,
                 arr -> arr[0],
                 Set.of(Collector.Characteristics.UNORDERED));
