@@ -3,7 +3,7 @@ package lesson4.task;
 public class MyThreads {
 
     private int counter = 1;
-    final LandRover obj;
+    private final LandRover obj;
 
     public MyThreads(LandRover obj) {
         this.obj = obj;
@@ -33,39 +33,21 @@ public class MyThreads {
     class ThreadD extends Thread {
         @Override
         public void run() {
-            task("number");
+            task(String.valueOf(counter));
         }
     }
 
-    void task(String word) {
-        synchronized (obj) {
-            while (counter <= obj.getN()) {
-                if (isSuitable(word)) {
-                    switch (word) {
-                        case "land": {
-                            obj.land(() -> System.out.println("land"));
-                            break;
-                        }
-                        case "rover": {
-                            obj.land(() -> System.out.println("rover"));
-                            break;
-                        }
-                        case "landRover": {
-                            obj.land(() -> System.out.println("landRover"));
-                            break;
-                        }
-                        default: {
-                            obj.number(System.out::println, counter);
-                        }
-                    }
-                    counter++;
-                    obj.notifyAll();
-                } else {
-                    try {
-                        obj.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+    synchronized void task(String word) {
+        while (counter <= obj.getN()) {
+            if (isSuitable(word)) {
+                counter++;
+                notifyAll();
+            }
+            else {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -74,19 +56,42 @@ public class MyThreads {
     boolean isSuitable(String word) {
         switch (word) {
             case "land": {
-                return counter % 3 == 0 && counter % 5 != 0;
+                if (counter % 3 == 0 && counter % 5 != 0) {
+                    obj.land(() -> System.out.println(word));
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
             case "rover": {
-                return counter % 3 != 0 && counter % 5 == 0;
+                if (counter % 5 == 0 && counter % 3 != 0) {
+                    obj.rover(() -> System.out.println(word));
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
             case "landRover": {
-                return counter % 3 == 0 && counter % 5 == 0;
+                if (counter % 15 == 0) {
+                    obj.landrover(() -> System.out.println(word));
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
-            case "number": {
-                return counter % 3 != 0 && counter % 5 != 0;
+            default: {
+                if (counter % 3 != 0 && counter % 5 != 0) {
+                    obj.number(System.out::println, counter);
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
         }
-        return false;
     }
 
     public void runThreads() {
